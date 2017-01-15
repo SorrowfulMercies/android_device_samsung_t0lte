@@ -23,11 +23,10 @@ LOCAL_PATH := device/samsung/t0lte
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_t0lte.txt
 
-# RIL
-COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{ "ril.ks.status", AID_SYSTEM, 0 },'
-
 # Camera
 COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
+
+TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
@@ -41,40 +40,16 @@ endif
 TARGET_RECOVERY_FSTAB := device/samsung/t0lte/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
 
+# F2FS
+PRODUCT_PACKAGES += \
+    fibmap.f2fs \
+    fsck.f2fs \
+    mkfs.f2fs
+
+TARGET_USERIMAGES_USE_F2FS := true
+
 # assert
 TARGET_OTA_ASSERT_DEVICE := t0lte,t0ltexx,GT-N7105,t0ltedv,GT-N7105T,t0lteatt,SGH-I317,t0ltetmo,SGH-T889,t0ltecan,t0ltevl,SGH-I317M
 
 # Selinux
-BOARD_SEPOLICY_DIRS += \
-    device/samsung/t0lte/selinux
-
-BOARD_SEPOLICY_UNION += \
-    bluetooth.te \
-    radio.te \
-    file_contexts \
-    te_macros \
-    device.te \
-    dhcp.te \
-    domain.te \
-    file.te \
-    init.te \
-    kickstart.te \
-    mediaserver.te \
-    netd.te \
-    netmgrd.te \
-    nfc.te \
-    qmiproxy.te \
-    qmuxd.te \
-    rild.te \
-    secril.te \
-    servicemanager.te \
-    sysinit.te \
-    system.te \
-    system_app.te \
-    system_server.te \
-    time_daemon.te \
-    ueventd.te \
-    vold.te \
-    wpa.te \
-    wpa_supplicant.te \
-    zygote.te
+BOARD_SEPOLICY_DIRS += device/samsung/t0lte/selinux
