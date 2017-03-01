@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,14 +19,19 @@
 
 LOCAL_PATH := device/samsung/t0lte
 
+TARGET_SPECIFIC_HEADER_PATH += $(LOCAL_PATH)/include
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_t0lte.txt
 
 # Camera
-COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
+BOARD_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
 
 TARGET_REQUIRES_SYNCHRONOUS_SETSURFACE := true
+
+# Text Relocations
+TARGET_NEEDS_TEXT_RELOCATIONS := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
@@ -38,6 +43,7 @@ endif
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/t0lte/rootdir/fstab.smdk4x12
+TARGET_RECOVERY_DENSITY := mdpi
 RECOVERY_FSTAB_VERSION := 2
 
 # F2FS
@@ -48,8 +54,13 @@ PRODUCT_PACKAGES += \
 
 TARGET_USERIMAGES_USE_F2FS := true
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+BOARD_MODEM_TYPE := mdm9x35
+BOARD_RIL_CLASS := ../../../device/samsung/t0lte/ril
+
 # assert
-TARGET_OTA_ASSERT_DEVICE := t0lte,t0ltexx,GT-N7105,t0ltedv,GT-N7105T,t0lteatt,SGH-I317,t0ltetmo,SGH-T889,t0ltecan,t0ltevl,SGH-I317M
+TARGET_OTA_ASSERT_DEVICE := GT-N7105,GT-N7105T,SGH-I317,SGH-I317M,SGH-T889,t0lte,t0lteatt,t0ltecan,t0ltedv,t0ltektt,t0lteskt,t0ltetmo,t0ltevl,t0ltexx
 
 # Selinux
 BOARD_SEPOLICY_DIRS += device/samsung/t0lte/selinux

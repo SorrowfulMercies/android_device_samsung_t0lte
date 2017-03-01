@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,5 +21,3 @@ PRODUCT_COPY_FILES += \
 
 # Include common makefile
 $(call inherit-product, device/samsung/t0lte/common.mk)
-
-$(call inherit-product-if-exists, vendor/samsung/t0lte/t0lte-vendor.mk)
