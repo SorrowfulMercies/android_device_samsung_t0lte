@@ -1,1 +1,1 @@
-allow netd log_device:chr_file { open write };
+allow netd dhcp_data_file:dir setattr;
