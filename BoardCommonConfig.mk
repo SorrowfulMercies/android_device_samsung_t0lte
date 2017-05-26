@@ -39,6 +39,10 @@ else
 TARGET_KERNEL_CONFIG := lineageos_t0lte_defconfig
 endif
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_t0lte
+TARGET_UNIFIED_DEVICE := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/t0lte/rootdir/fstab.smdk4x12
 TARGET_RECOVERY_DENSITY := mdpi
@@ -61,7 +65,7 @@ BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := mdm9x35
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := GT-N7105,GT-N7105T,SGH-I317,SGH-I317M,SGH-T889,t0lte,t0lteatt,t0ltecan,t0ltedv,t0ltektt,t0lteskt,t0ltetmo,t0ltevl,t0ltexx
+TARGET_OTA_ASSERT_DEVICE := t0lte,t0ltexx,GT-N7105,t0ltedv,GT-N7105T,t0lteatt,SGH-I317,t0ltetmo,SGH-T889,t0ltecan,t0ltevl,SGH-I317M
 
 # Selinux
 BOARD_SEPOLICY_DIRS += device/samsung/t0lte/selinux
